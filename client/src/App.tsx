@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Editor from "@/pages/editor";
+import { Analytics } from "@vercel/analytics/react";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router />
       <Toaster />
+      <Analytics />
     </QueryClientProvider>
   );
 }
