@@ -219,7 +219,7 @@ export default function Editor() {
     <div className="min-h-screen bg-background flex flex-col">
       <OnboardingDialog />
       <div className="border-b">
-        <div className="container mx-auto py-4 flex justify-between items-center">
+        <div className="px-10 mx-auto py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold">YOLO Labelling Tool</h1>
           <div className="flex gap-2">
             <Button
@@ -283,7 +283,7 @@ export default function Editor() {
             )}
           </Card>
           {images.length > 0 && (
-            <div className="container mx-auto py-4">
+            <div className="container mx-auto">
               <ImagePreviewPanel
                 images={images}
                 currentIndex={currentImageIndex}

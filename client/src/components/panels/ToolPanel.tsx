@@ -14,15 +14,15 @@ interface Props {
   hasPreviousImage: boolean;
 }
 
-export default function ToolPanel({ 
-  selectedTool, 
-  setSelectedTool, 
-  selectedBox, 
+export default function ToolPanel({
+  selectedTool,
+  setSelectedTool,
+  selectedBox,
   onDeleteBox,
   onNextImage,
   onPreviousImage,
   hasNextImage = false,
-  hasPreviousImage = false
+  hasPreviousImage = false,
 }: Props) {
   return (
     <Card>
@@ -30,25 +30,25 @@ export default function ToolPanel({
         <CardTitle>Tools</CardTitle>
       </CardHeader>
       <CardContent className="space-y-2">
-        <Button 
-          variant={selectedTool === 'draw' ? 'default' : 'secondary'} 
+        <Button
+          variant={selectedTool === "draw" ? "default" : "secondary"}
           className="w-full justify-start gap-2 text-left"
-          onClick={() => setSelectedTool('draw')}
+          onClick={() => setSelectedTool("draw")}
         >
           <Square className="h-4 w-4 shrink-0" />
           <span className="flex-1 text-left">Draw Box</span>
         </Button>
-        <Button 
-          variant={selectedTool === 'edit' ? 'default' : 'secondary'} 
+        <Button
+          variant={selectedTool === "edit" ? "default" : "secondary"}
           className="w-full justify-start gap-2 text-left"
-          onClick={() => setSelectedTool('edit')}
+          onClick={() => setSelectedTool("edit")}
         >
           <Edit2 className="h-4 w-4 shrink-0" />
           <span className="flex-1 text-left">Edit Mode</span>
         </Button>
         {selectedBox !== null && onDeleteBox && (
-          <Button 
-            variant="destructive" 
+          <Button
+            variant="destructive"
             className="w-full justify-start gap-2 text-left"
             onClick={() => onDeleteBox(selectedBox || 0)}
           >
