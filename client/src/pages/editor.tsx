@@ -233,7 +233,14 @@ export default function Editor() {
       <OnboardingDialog />
       <div className="border-b">
         <div className="px-10 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">YOLO Labelling Tool</h1>
+          <h1 className="text-2xl font-bold flex items-center gap-2">
+            <img
+              src="/favicon.png"
+              alt="YOLO Labelling Tool Logo"
+              className="h-8 w-8"
+            />
+            YOLO Labelling Tool
+          </h1>
           <div className="flex gap-2">
             <Button
               variant="outline"
