@@ -12,6 +12,7 @@ interface Props {
   onPreviousImage: () => void;
   hasNextImage: boolean;
   hasPreviousImage: boolean;
+  onRemoveImage: () => void;
 }
 
 export default function ToolPanel({
@@ -21,6 +22,7 @@ export default function ToolPanel({
   onDeleteBox,
   onNextImage,
   onPreviousImage,
+  onRemoveImage,
   hasNextImage = false,
   hasPreviousImage = false,
 }: Props) {
@@ -56,6 +58,17 @@ export default function ToolPanel({
             <span className="flex-1 text-left">Delete Box</span>
           </Button>
         )}
+
+        <div className="pt-4 border-t">
+          <Button
+            variant="destructive"
+            className="w-full justify-start gap-2 text-left"
+            onClick={onRemoveImage}
+          >
+            <Trash2 className="h-4 w-4 shrink-0" />
+            <span className="flex-1 text-left">Remove Image</span>
+          </Button>
+        </div>
 
         {/* Image Navigation */}
         <div className="pt-4 border-t">

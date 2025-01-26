@@ -213,13 +213,26 @@ export default function Editor() {
     }
   };
 
+  const handleRemoveImage = () => {
+    const newImages = [...images];
+    newImages.splice(currentImageIndex, 1);
+    setImages(newImages);
+
+    // If we removed the last image, move the index back one
+    if (currentImageIndex >= newImages.length) {
+      setCurrentImageIndex(Math.max(0, newImages.length - 1));
+    }
+
+    setSelectedBox(null); // Reset selected box when removing image
+  };
+
   const currentImage = images[currentImageIndex];
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <OnboardingDialog />
       <div className="border-b">
-        <div className="px-10 mx-auto py-4 flex justify-between items-center">
+        <div className="px-10 py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold">YOLO Labelling Tool</h1>
           <div className="flex gap-2">
             <Button
@@ -251,7 +264,7 @@ export default function Editor() {
         </div>
       </div>
 
-      <div className="flex-1 px-4 mx-auto py-4 grid grid-cols-5 gap-4">
+      <div className="flex-1 px-4 py-4 grid grid-cols-5 gap-4">
         <div className="col-span-1 space-y-4">
           <ClassPanel
             classes={classes}
@@ -300,6 +313,7 @@ export default function Editor() {
             selectedBox={selectedBox}
             onDeleteBox={handleDeleteBox}
             onNextImage={handleNextImage}
+            onRemoveImage={handleRemoveImage}
             onPreviousImage={handlePreviousImage}
             hasNextImage={currentImageIndex < images.length - 1}
             hasPreviousImage={currentImageIndex > 0}
