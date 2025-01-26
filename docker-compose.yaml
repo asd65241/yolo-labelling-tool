@@ -1,0 +1,14 @@
+version: "3.5"
+services:
+  yolo-labelling-tool:
+    build: .
+    restart: "always"
+    networks:
+      - "net"
+    environment:
+      VIRTUAL_HOST: "yololabellingtool.com"
+      LETSENCRYPT_HOST: "yololabellingtool.com"
+      VIRTUAL_PORT: "3000"
+networks:
+  net:
+    external: true
