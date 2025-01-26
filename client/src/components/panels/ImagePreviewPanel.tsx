@@ -20,14 +20,27 @@ export default function ImagePreviewPanel({
           Image {currentIndex + 1} of {images.length}
         </span>
       </div>
-      <div className="flex gap-4 overflow-x-auto pb-2">
+      <div
+        className="flex gap-4 overflow-x-auto pb-2"
+        ref={(ref) => {
+          if (ref) {
+            const selectedButton = ref.children[currentIndex] as HTMLElement;
+            selectedButton?.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+              inline: "center",
+            });
+          }
+        }}
+      >
         {images.map((image, index) => (
           <Button
             key={index}
             variant="ghost"
             className={cn(
               "p-2 h-auto shrink-0 flex flex-col items-start gap-2",
-              index === currentIndex && "bg-accent"
+              index === currentIndex &&
+                "bg-black text-white hover:bg-black hover:text-white"
             )}
             onClick={() => onSelect(index)}
           >

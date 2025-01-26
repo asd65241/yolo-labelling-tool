@@ -19,10 +19,14 @@ export function drawCanvas(
 
     // Draw boxes
     boxes.forEach((box, index) => {
-      const color = classes[box.class].color;
+      const defaultClass = { name: "Unknown", color: "#808080" };
+      const boxClass =
+        box.class && classes[box.class] ? classes[box.class] : defaultClass;
+      const color = boxClass.color;
+
       // Draw label with background first
       if (box.width > 0 && box.height > 0) {
-        const text = classes[box.class].name;
+        const text = boxClass.name;
         ctx.font = "bold 30px Arial"; // Large text size
         const metrics = ctx.measureText(text);
 

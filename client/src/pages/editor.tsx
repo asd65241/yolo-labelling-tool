@@ -251,40 +251,17 @@ export default function Editor() {
         </div>
       </div>
 
-      <div className="flex-1 container mx-auto py-4 grid grid-cols-[250px_1fr] gap-4">
-        <div className="space-y-4">
+      <div className="flex-1 px-4 mx-auto py-4 grid grid-cols-5 gap-4">
+        <div className="col-span-1 space-y-4">
           <ClassPanel
             classes={classes}
             setClasses={setClasses}
             selectedClass={selectedClass}
             onSelectClass={handleClassChange}
           />
-          <ToolPanel
-            selectedTool={selectedTool}
-            setSelectedTool={setSelectedTool}
-            selectedBox={selectedBox}
-            onDeleteBox={handleDeleteBox}
-            onNextImage={handleNextImage}
-            onPreviousImage={handlePreviousImage}
-            hasNextImage={currentImageIndex < images.length - 1}
-            hasPreviousImage={currentImageIndex > 0}
-          />
-          <AnnotationsPanel
-            boxes={currentImage?.boxes ?? []}
-            classes={classes}
-            onEdit={handleBoxSelect}
-            onDelete={handleDeleteBox}
-            selectedBox={selectedBox}
-            onSelectClass={(boxIndex: number) => {
-              setSelectedBox(boxIndex);
-              if (selectedTool === "edit") {
-                setSelectedClass(currentImage.boxes[boxIndex].class);
-              }
-            }}
-          />
         </div>
 
-        <div>
+        <div className="col-span-3 space-y-4">
           <Card className="p-4 relative">
             {currentImage ? (
               <BoundingBoxEditor
@@ -313,6 +290,32 @@ export default function Editor() {
               />
             </div>
           )}
+        </div>
+
+        <div className="col-span-1 space-y-4">
+          <ToolPanel
+            selectedTool={selectedTool}
+            setSelectedTool={setSelectedTool}
+            selectedBox={selectedBox}
+            onDeleteBox={handleDeleteBox}
+            onNextImage={handleNextImage}
+            onPreviousImage={handlePreviousImage}
+            hasNextImage={currentImageIndex < images.length - 1}
+            hasPreviousImage={currentImageIndex > 0}
+          />
+          <AnnotationsPanel
+            boxes={currentImage?.boxes ?? []}
+            classes={classes}
+            onEdit={handleBoxSelect}
+            onDelete={handleDeleteBox}
+            selectedBox={selectedBox}
+            onSelectClass={(boxIndex: number) => {
+              setSelectedBox(boxIndex);
+              if (selectedTool === "edit") {
+                setSelectedClass(currentImage.boxes[boxIndex].class);
+              }
+            }}
+          />
         </div>
       </div>
     </div>
