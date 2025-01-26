@@ -1,8 +1,14 @@
 # YOLO Labelling Tool
 
-A modern, web-based tool for creating and editing YOLO format image annotations with an intuitive interface.
+A modern, web-based tool for creating and editing YOLO format image annotations with an intuitive interface. All data processing happens in your browser - no images or annotations are uploaded to any server.
 
-![YOLO Labelling Tool](preview.png)
+![YOLO Labelling Tool](/assets/demo.jpeg)
+
+## Live Demo
+
+Visit the live demo at [https://yololabellingtool.com](https://yololabellingtool.com)
+
+Try out the tool's features directly in your browser without installing anything. The demo includes sample images to help you get started.
 
 ## Features
 
@@ -12,6 +18,7 @@ A modern, web-based tool for creating and editing YOLO format image annotations 
 - 💾 Export to YOLO format with classes.txt
 - 🔄 Import existing YOLO annotations
 - 🎨 Customizable class colors using Tailwind CSS color palette
+- 🔒 Privacy-focused: All data stays in your browser
 - 📱 [WIP]Responsive design for various screen sizes
 
 ## Getting Started
