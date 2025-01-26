@@ -24,31 +24,7 @@ export function drawCanvas(
         box.class && classes[box.class] ? classes[box.class] : defaultClass;
       const color = boxClass.color;
 
-      // Draw label with background first
-      if (box.width > 0 && box.height > 0) {
-        const text = boxClass.name;
-        ctx.font = "bold 30px Arial"; // Large text size
-        const metrics = ctx.measureText(text);
-
-        // Calculate label position
-        const labelY = box.y - 8; // Position label just above the box
-        const labelHeight = 40;
-
-        // Draw background
-        ctx.fillStyle = color;
-        ctx.fillRect(
-          box.x - 3,
-          labelY - labelHeight,
-          metrics.width + 20,
-          labelHeight * 1.2
-        );
-
-        // Draw text
-        ctx.fillStyle = "white";
-        ctx.fillText(text, box.x + 4, labelY - 6);
-      }
-
-      // Draw box after label
+      // Draw box first
       drawBox(
         ctx,
         box.x,
@@ -58,6 +34,34 @@ export function drawCanvas(
         color,
         index === selectedBox
       );
+
+      // Draw label with background after box
+      if (box.width > 0 && box.height > 0) {
+        const text = boxClass.name;
+
+        // Use relative font size based on canvas height
+        const fontSize = Math.max(canvas.height * 0.03, 30); // Min 30px
+        ctx.font = `bold ${fontSize}px Arial`;
+        const metrics = ctx.measureText(text);
+
+        // Calculate relative label dimensions
+        const labelPadding = canvas.height * 0.005; // Padding around text
+        const labelHeight = fontSize * 1.2;
+        const labelY = box.y - labelPadding;
+
+        // Draw background with relative positioning
+        ctx.fillStyle = color;
+        ctx.fillRect(
+          box.x - labelPadding,
+          labelY - labelHeight,
+          metrics.width + labelPadding * 2,
+          labelHeight
+        );
+
+        // Draw text with relative positioning
+        ctx.fillStyle = "white";
+        ctx.fillText(text, box.x + labelPadding / 2, labelY - labelPadding);
+      }
     });
   };
 }
@@ -71,7 +75,7 @@ export function drawBox(
   color: string,
   selected: boolean = false
 ) {
-  const lineWidth = selected ? 8 : 6; // Thick lines
+  const lineWidth = Math.max(ctx.canvas.width * 0.008, 8); // Relative line width with minimum size
 
   // Ensure coordinates stay within canvas bounds
   const actualX = Math.max(lineWidth / 2, x);
@@ -88,7 +92,7 @@ export function drawBox(
 
   // Draw corner handles if selected
   if (selected) {
-    const handleSize = 16;
+    const handleSize = Math.max(ctx.canvas.width * 0.016, 16); // Relative handle size with minimum
     ctx.fillStyle = color;
 
     // Ensure handles stay within bounds
