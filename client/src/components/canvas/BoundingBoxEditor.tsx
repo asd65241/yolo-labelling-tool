@@ -4,6 +4,7 @@ import type { Tool } from "@/pages/editor";
 import type { BoundingBox } from "@/types";
 
 interface Props {
+  image: { url: string; file: File; boxes: any[] };
   imageUrl: string;
   boxes: BoundingBox[];
   setBoxes: (boxes: BoundingBox[]) => void;
@@ -18,6 +19,7 @@ interface Props {
 const HANDLE_SIZE = 10; // Increased handle size
 
 export default function BoundingBoxEditor({
+  image,
   imageUrl,
   boxes,
   setBoxes,
@@ -276,23 +278,29 @@ export default function BoundingBoxEditor({
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full relative bg-gray-100 rounded-lg overflow-hidden p-6"
-      style={{ cursor: getCursor() }}
-    >
-      <canvas
-        ref={canvasRef}
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={() => {
-          setDrawing(false);
-          setDragging(false);
-          setResizing(false);
-        }}
-      />
+    <div>
+      <div
+        ref={containerRef}
+        className="w-full relative rounded-lg overflow-hidden"
+        style={{ cursor: getCursor() }}
+      >
+        <canvas
+          ref={canvasRef}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={() => {
+            setDrawing(false);
+            setDragging(false);
+            setResizing(false);
+          }}
+        />
+      </div>
+      {/* Show filename */}
+      <div className="absolute bottom-0 right-0 p-2 text-xs text-white bg-black font-bold">
+        {image.file.name}
+      </div>
     </div>
   );
 }

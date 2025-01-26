@@ -265,6 +265,7 @@ export default function Editor() {
           <Card className="p-4 relative">
             {currentImage ? (
               <BoundingBoxEditor
+                image={currentImage}
                 imageUrl={currentImage.url}
                 boxes={currentImage.boxes}
                 setBoxes={updateBoxes}
