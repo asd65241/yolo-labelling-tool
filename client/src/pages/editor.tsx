@@ -311,6 +311,18 @@ export default function Editor() {
               />
             </div>
           )}
+
+          {/* Add build with heart by @asd65241 */}
+          <div className="text-center text-sm text-muted-foreground">
+            Build with ❤️ by{" "}
+            <a
+              href="https://github.com/asd65241/yolo-labelling-tool"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              tommong
+            </a>
+          </div>
         </div>
 
         <div className="col-span-1 space-y-4">
