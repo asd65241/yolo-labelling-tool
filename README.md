@@ -11,18 +11,20 @@ A modern, web-based tool for creating and editing YOLO format image annotations 
 - 🎯 Robust class management with color-coded labels
 - 💾 Export to YOLO format with classes.txt
 - 🔄 Import existing YOLO annotations
-- 📱 Responsive design for various screen sizes
 - 🎨 Customizable class colors using Tailwind CSS color palette
+- 📱 [WIP]Responsive design for various screen sizes
 
 ## Getting Started
 
 1. Clone the repository
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -60,9 +62,11 @@ npm run dev
 ### YOLO Format
 
 Each annotation file contains one line per object in the format:
+
 ```
 <class_id> <x_center> <y_center> <width> <height>
 ```
+
 All values are normalized between 0 and 1.
 
 ### classes.txt
