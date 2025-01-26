@@ -4,11 +4,12 @@ import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
 import path, { dirname } from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { fileURLToPath } from "url";
+import vercel from "vite-plugin-vercel";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 export default defineConfig({
-  plugins: [react(), runtimeErrorOverlay(), themePlugin()],
+  plugins: [react(), runtimeErrorOverlay(), themePlugin(), vercel()],
   resolve: {
     alias: {
       "@db": path.resolve(__dirname, "db"),
@@ -19,5 +20,11 @@ export default defineConfig({
   build: {
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
+  },
+  server: {
+    port: process.env.PORT as unknown as number,
+  },
+  define: {
+    __APP_ENV__: process.env.VITE_VERCEL_ENV,
   },
 });
