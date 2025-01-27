@@ -230,6 +230,19 @@ export default function Editor() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <div className="lg:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center p-8">
+        <Card className="max-w-md p-6 text-center">
+          <h2 className="text-2xl font-bold mb-4">Desktop Only</h2>
+          <p className="text-muted-foreground mb-4">
+            This application is designed for desktop use only. Please visit this
+            page on a desktop computer for the best experience.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Minimum recommended screen width: 1024px
+          </p>
+        </Card>
+      </div>
+
       <OnboardingDialog />
       <div className="border-b">
         <div className="px-10 py-4 flex justify-between items-center">
