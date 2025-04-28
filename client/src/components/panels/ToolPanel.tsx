@@ -80,6 +80,7 @@ export default function ToolPanel({
           >
             <ChevronLeft className="h-4 w-4 shrink-0" />
             <span className="flex-1 text-left">Previous Image</span>
+            <kbd className="px-2 py-1 text-xs bg-muted rounded-md">Q</kbd>
           </Button>
           <Button
             variant="secondary"
@@ -89,6 +90,7 @@ export default function ToolPanel({
           >
             <ChevronRight className="h-4 w-4 shrink-0" />
             <span className="flex-1 text-left">Next Image</span>
+            <kbd className="px-2 py-1 text-xs bg-muted rounded-md">E</kbd>
           </Button>
         </div>
       </CardContent>
