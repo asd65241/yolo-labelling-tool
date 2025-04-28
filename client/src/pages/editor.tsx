@@ -63,6 +63,21 @@ export default function Editor() {
     };
   }, [images]);
 
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === "q") {
+        handlePreviousImage();
+      } else if (e.key === "e") {
+        handleNextImage();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [currentImageIndex, images.length]);
+
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files) return;
